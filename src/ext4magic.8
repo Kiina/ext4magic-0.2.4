@@ -575,7 +575,7 @@ print the content of the Inode number 8195 from the journal transaction number 1
  # ext4magic /dev/sda3 \-f user1/Documents \-a $(date \-d "\-3 day" +%s) \-b $(date \-d "\-2 day" +%s)
 
 print a undeleded Inode for pathname "user1/Documents" two to three days back. If it's a directory, then also the content of this directory.
-If can not found the old directory blocks in Journal, the directory content would be the actual from filesystem.
+If can not find the old directory blocks in Journal, the directory content would be the actual from filesystem.
 
 
 .TP

@@ -545,7 +545,7 @@ void list_dir2(ext2_ino_t ino, struct ext2_inode *inode)
 				if (options & DELETED_OPT ) flags |= DIRENT_FLAG_INCLUDE_REMOVED;
 				retval = local_dir_iterate3(current_fs,ino, inode, flags,0, find_dir_proc, &fl);
 			 	if (retval )
-               				fprintf(stderr,"Warning: error-NR %d can not found file: %s/%s\n", retval, path, name);
+               				fprintf(stderr,"Warning: error-NR %d can not find file: %s/%s\n", retval, path, name);
 			}
 		}
  		
