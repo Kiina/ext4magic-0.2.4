@@ -1,0 +1,27 @@
+name: Makefile
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: install deps
+      run: apt update && apt install -y e2fslibs-dev uuid-dev libblkid-dev libmagic-dev
+    - name: configure
+      run: ./configure
+    - name: make
+      run: make
+    - name: Upload binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: src/ext4magic
+        asset_name: ext4magic
+        tag: ${{ github.ref }}
+        overwrite: true
